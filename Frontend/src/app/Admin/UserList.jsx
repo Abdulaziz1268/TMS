@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import deleteIcon from "../../assets/delete-dark.png"
 import editIcon from "../../assets/edit-dark.png"

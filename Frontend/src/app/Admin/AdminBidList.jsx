@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import { adminApi } from "../Config/Api"
 
 function Bids({ item }) {
@@ -64,7 +64,6 @@ function Bids({ item }) {
           Save
         </button>
       </form>
-      <Toaster />
     </div>
   )
 }

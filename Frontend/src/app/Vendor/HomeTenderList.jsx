@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+
 import Card from "../Components/Card"
 import photo from "../../assets/placeholderimage1.png"
 import searchPhoto from "../../assets/search.svg"

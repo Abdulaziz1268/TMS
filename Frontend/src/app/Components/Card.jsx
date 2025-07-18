@@ -1,6 +1,5 @@
-import React from "react"
 import { Navigate, useNavigate } from "react-router-dom"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 
 function Card({ badge, src, subTitle, title, tender }) {
   const navigate = useNavigate()
@@ -28,7 +27,6 @@ function Card({ badge, src, subTitle, title, tender }) {
         </div>
         <p className="cardSubTitle">{subTitle}</p>
       </div>
-      <Toaster richColors expand={false} position="bottom-center" />
     </div>
   )
 }

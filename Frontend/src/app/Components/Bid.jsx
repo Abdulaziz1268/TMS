@@ -1,7 +1,8 @@
 import { Formik } from "formik"
+import { toast } from "sonner"
 import { useCallback, useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import { toast, Toaster } from "sonner"
+
 import { paymentApi, vendorApi } from "../Config/Api"
 
 function Bid() {
@@ -112,7 +113,6 @@ function Bid() {
           )}
         </Formik>
       </div>
-      <Toaster />
     </div>
   )
 }

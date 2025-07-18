@@ -1,11 +1,11 @@
 import moment from "moment"
+import { toast } from "sonner"
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 
 import AdminBidList from "../Admin/AdminBidList"
 import { adminApi, vendorApi } from "../Config/Api"
 import photo from "../../assets/placeholderimage1.png"
-import { toast, Toaster } from "sonner"
 
 const Detail = () => {
   const [highestBid, setHighestBid] = useState(null)
@@ -126,7 +126,6 @@ const Detail = () => {
           <AdminBidList key={item._id} item={item} />
         ))}
       </div>
-      <Toaster richColors expand={false} position="bottom-center" />
     </div>
   )
 }

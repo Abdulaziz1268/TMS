@@ -1,12 +1,13 @@
-import { Formik } from "formik"
-import React, { useState } from "react"
 import * as Yup from "yup"
+import { Formik } from "formik"
+import { toast } from "sonner"
+import { useState } from "react"
+
 import AppInput from "../Components/AppInput"
-import show from "../../assets/visibilityDark.svg"
-import hide from "../../assets/visibilityOffDark.svg"
-import { toast, Toaster } from "sonner"
-import { useNavigate } from "react-router-dom"
 import { authApi } from "../Config/Api.js"
+import hide from "../../assets/visibilityOffDark.svg"
+import show from "../../assets/visibilityDark.svg"
+import { useNavigate } from "react-router-dom"
 
 const validationSchema = Yup.object().shape({
   fname: Yup.string().required().min(3).max(16).label("First Name"),
@@ -135,7 +136,6 @@ function RegisterScreen() {
           </form>
         )}
       </Formik>
-      <Toaster richColors expand={false} position="bottom-center" />
     </div>
   )
 }

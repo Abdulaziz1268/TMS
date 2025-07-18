@@ -1,16 +1,18 @@
-import React, { useContext } from "react"
 import { Routes, Route, Navigate } from "react-router-dom"
+import { Toaster } from "sonner"
+import { useContext } from "react"
+
 import "./App.css"
-import Bid from "./app/Components/Bid"
 import AdminScreen from "./app/Admin/AdminScreen"
+import { AuthContext, AuthProvider } from "./app/Contexts/Auth"
+import Bid from "./app/Components/Bid"
+import Detail from "./app/Components/Detail"
+import Home from "./app/Vendor/Home"
 import LoginScreen from "./app/Authentication/LoginScreen"
 import RegisterScreen from "./app/Authentication/RegisterScreen"
 import TenderDetail from "./app/Vendor/TenderDetail"
-import VendorScreen from "./app/Vendor/VendorScreen"
-import Home from "./app/Vendor/Home"
-import { AuthContext, AuthProvider } from "./app/Contexts/Auth"
 import { UserContext } from "./app/Contexts/UserContext"
-import Detail from "./app/Components/Detail"
+import VendorScreen from "./app/Vendor/VendorScreen"
 import AdminTenderList from "./app/Admin/AdminTenderList"
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
     <UserContext>
       <AuthProvider>
         <AppRoutes />
+        <Toaster richColors expand={false} position="bottom-center" />
       </AuthProvider>
     </UserContext>
   )

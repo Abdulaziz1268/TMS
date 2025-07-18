@@ -1,6 +1,7 @@
+import { toast } from "sonner"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { toast, Toaster } from "sonner"
+
 import { adminApi } from "../Config/Api"
 
 function TenderList({ tender }) {
@@ -48,7 +49,6 @@ function TenderList({ tender }) {
           </button>
         </div>
       </div>
-      <Toaster />
     </div>
   )
 }

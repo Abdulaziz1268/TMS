@@ -5,7 +5,7 @@ import AppInput from "../Components/AppInput"
 import show from "../../assets/visibilityDark.svg"
 import hide from "../../assets/visibilityOffDark.svg"
 import { Link, useNavigate } from "react-router-dom"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import { AuthContext } from "../Contexts/Auth"
 import { authApi } from "../Config/Api"
 
@@ -103,7 +103,6 @@ function LoginScreen() {
           you don't have account? click <Link to="/register">here</Link>
         </p>
       </div>
-      <Toaster richColors expand={false} position="bottom-center" />
     </div>
   )
 }
