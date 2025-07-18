@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react"
-import TenderList from "../Components/TenderList"
-import Popup from "reactjs-popup"
 import { Formik } from "formik"
-import { toast, Toaster } from "sonner"
+import Popup from "reactjs-popup"
+import { toast } from "sonner"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css" // Ensure datepicker styles
+
 import { adminApi } from "../Config/Api"
+import DatePicker from "react-datepicker"
+import TenderList from "../Components/TenderList"
 
 function Tenders() {
   const [list, setList] = useState([])
@@ -137,7 +138,6 @@ function Tenders() {
       {list.map((tender) => (
         <TenderList key={tender._id} tender={tender} />
       ))}
-      <Toaster richColors expand={false} position="bottom-center" />
     </div>
   )
 }

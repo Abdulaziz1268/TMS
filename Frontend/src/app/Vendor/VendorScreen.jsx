@@ -19,9 +19,7 @@ function VendorScreen({ src = profilePhoto }) {
 
   const handleLogout = () => {
     // setUserData(null)
-    localStorage.removeItem("userId")
-    localStorage.removeItem("token")
-    localStorage.removeItem("role")
+    localStorage.clear()
     navigate("/login")
   }
   return (

@@ -29,10 +29,11 @@ function LoginScreen() {
             const result = await authApi.post("/login", values)
             console.log(result.data)
 
-            const { token, role, _id } = result.data
+            const { token, role, _id, fname } = result.data
             localStorage.setItem("userId", _id)
             localStorage.setItem("token", token)
             localStorage.setItem("role", role)
+            localStorage.setItem("fname", fname)
 
             toast.success("successful")
             setIsAuth(true)

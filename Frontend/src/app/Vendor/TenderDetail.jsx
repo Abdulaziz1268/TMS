@@ -94,12 +94,16 @@ const TenderDetail = () => {
           <h2 className="title">{tender.title}</h2>
           <p className="description">{tender.description}</p>
         </div>
-        <button
-          className="bidButton"
-          onClick={() => navigate("/bid", { state: { tenderId: tender._id } })}
-        >
-          Bid
-        </button>
+        {localStorage.getItem("role") !== "admin" && (
+          <button
+            className="bidButton"
+            onClick={() =>
+              navigate("/bid", { state: { tenderId: tender._id } })
+            }
+          >
+            Bid
+          </button>
+        )}
       </div>
     </div>
   )

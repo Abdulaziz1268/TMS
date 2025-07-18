@@ -16,6 +16,8 @@ export const paymentApi = axios.create({
   baseURL: "http://localhost:2005/api/payment",
 })
 
+export const BASE_URL = "http://localhost:2005" // for serving files and images
+
 const authInterceptor = (req) => {
   const token = localStorage.getItem("token")
   if (token) {

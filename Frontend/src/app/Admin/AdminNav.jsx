@@ -10,9 +10,7 @@ function AdminNav({ selectedComponent, src = photo }) {
   const navigate = useNavigate()
   const handleLogout = () => {
     // setUserData(null)
-    localStorage.removeItem("token")
-    localStorage.removeItem("role")
-    localStorage.removeItem("userId")
+    localStorage.clear()
     navigate("/login")
   }
   return (
