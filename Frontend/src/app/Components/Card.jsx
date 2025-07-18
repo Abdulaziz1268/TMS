@@ -1,0 +1,36 @@
+import React from "react"
+import { Navigate, useNavigate } from "react-router-dom"
+import { toast, Toaster } from "sonner"
+
+function Card({ badge, src, subTitle, title, tender }) {
+  const navigate = useNavigate()
+  return (
+    <div
+      className="cardContainer"
+      onClick={() => {
+        tender.status == "close"
+          ? toast.error("the tender is closed")
+          : navigate("/tenderDetail", { state: { tender } })
+      }}
+    >
+      <div className="cardImageContainer">
+        <img src={src} className="cardImage" />
+      </div>
+      <div className="cardDetail">
+        <div className="titleContainer">
+          <h3 className="cardTitle">{title}</h3>
+          <p
+            className="badge"
+            style={{ backgroundColor: badge === "open" ? "green" : "red" }}
+          >
+            {badge}
+          </p>
+        </div>
+        <p className="cardSubTitle">{subTitle}</p>
+      </div>
+      <Toaster richColors expand={false} position="bottom-center" />
+    </div>
+  )
+}
+
+export default Card
