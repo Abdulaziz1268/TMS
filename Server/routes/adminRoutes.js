@@ -12,17 +12,39 @@ import {
 } from "../controllers/adminController.js"
 import upload from "../config/storage.js"
 import { tenderList } from "../controllers/vendorController.js"
+import { authenticate, authorize } from "../middlewares/authMiddleware.js"
 
 const router = Router()
 
-router.get("/userList", userList)
-router.get("/bid/:id", bid)
-router.get("/tenderList", tenderList)
-router.post("/postTender", upload.single("image"), postTender)
-router.patch("/updateUser/:id", updateUser)
-router.patch("/updateBidStatus/:id", updateBidStatus)
-router.patch("/updateTenderStatus/:id", updateTenderStatus)
-router.delete("/deleteUser/:id", deleteUser)
-router.delete("/deleteTender/:id", deleteTender)
+router.get("/userList", authenticate, authorize("admin"), userList)
+router.get("/bid/:id", authenticate, authorize("admin"), bid)
+router.get("/tenderList", authenticate, tenderList)
+router.post(
+  "/postTender",
+  authenticate,
+  authorize("admin"),
+  upload.single("image"),
+  postTender
+)
+router.patch("/updateUser/:id", authenticate, authorize("admin"), updateUser)
+router.patch(
+  "/updateBidStatus/:id",
+  authenticate,
+  authorize("admin"),
+  updateBidStatus
+)
+router.patch(
+  "/updateTenderStatus/:id",
+  authenticate,
+  authorize("admin"),
+  updateTenderStatus
+)
+router.delete("/deleteUser/:id", authenticate, authorize("admin"), deleteUser)
+router.delete(
+  "/deleteTender/:id",
+  authenticate,
+  authorize("admin"),
+  deleteTender
+)
 
 export default router
