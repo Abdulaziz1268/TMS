@@ -14,6 +14,7 @@ import TenderDetail from "./app/Vendor/TenderDetail"
 import { UserContext } from "./app/Contexts/UserContext"
 import VendorScreen from "./app/Vendor/VendorScreen"
 import AdminTenderList from "./app/Admin/AdminTenderList"
+import EditTender from "./app/Admin/EditTender"
 
 function App() {
   return (
@@ -47,6 +48,10 @@ const AppRoutes = () => {
       <Route
         path="/Detail"
         element={isAdmin ? <Detail /> : <Navigate to="/login" />}
+      />
+      <Route
+        path="/EditTender"
+        element={isAdmin ? <EditTender /> : <Navigate to="/login" />}
       />
       <Route
         path="/tenders"

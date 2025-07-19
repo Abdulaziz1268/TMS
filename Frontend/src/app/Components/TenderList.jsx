@@ -40,7 +40,7 @@ function TenderList({ tender }) {
             className="btn"
             onClick={() => navigate("/Detail", { state: { tender } })}
           >
-            view Bids
+            view Details
           </button>
           {/* <button className="btn">Edit</button> */}
           <button
@@ -51,6 +51,14 @@ function TenderList({ tender }) {
             }}
           >
             Delete
+          </button>
+          <button
+            className="btn"
+            onClick={() => {
+              navigate("/EditTender", { state: { tender } })
+            }}
+          >
+            Edit
           </button>
         </div>
       </div>
