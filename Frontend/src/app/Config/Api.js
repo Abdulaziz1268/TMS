@@ -32,7 +32,9 @@ const authErrorResInterceptor = (error) => {
   if (error.response?.status === 401) {
     localStorage.clear()
     toast.error("Your token is Expired Please login.")
-    window.location.href = "/login"
+    setTimeout(() => {
+      window.location.href = "/login"
+    }, 1500)
   }
   return Promise.reject(error)
 }
