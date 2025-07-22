@@ -7,11 +7,14 @@ import HomeTenderList from "./HomeTenderList"
 import logoutPhoto from "../../assets/logout.svg"
 import profilePhoto from "../../assets/profile picture placeholder.jpg"
 import { UserContext } from "../Contexts/UserContext"
+import { AuthContext } from "../Contexts/Auth"
 
 function VendorScreen({ src = profilePhoto }) {
   const [selectedItem, setSelectedItem] = useState("Home")
   // const { setUserData } = useContext(UserContext)
   const navigate = useNavigate()
+
+  const { isAdmin } = useContext(AuthContext)
 
   const handleItemClick = (item) => {
     setSelectedItem(item)
@@ -28,6 +31,11 @@ function VendorScreen({ src = profilePhoto }) {
         <div className="navLinkContainer">
           <h2>Tenders</h2>
         </div>
+        {isAdmin && (
+          <div className="dashboardBtn" onClick={() => navigate("/admin")}>
+            <h3 style={{ alignSelf: "center", color: "white" }}>Dashboard</h3>
+          </div>
+        )}
         <div className="vendorNavProfile">
           <Popup
             trigger={

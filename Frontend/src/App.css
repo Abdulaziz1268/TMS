@@ -2,7 +2,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-.btn .container {
+.topForm .container {
   background-color: white;
   width: 100%;
   height: 100vh;
@@ -309,6 +309,24 @@
   justify-content: center;
   align-items: center;
   flex: 1;
+}
+
+.dashboardBtn {
+  padding: 10px;
+  background-color: cornflowerblue;
+  border-radius: 30px;
+  height: 45px;
+  margin-right: 20px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease; /* Optional for smooth hover */
+}
+
+.dashboardBtn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .navLink {
@@ -877,7 +895,6 @@ input[type="number"] {
 }
 
 .topForm {
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

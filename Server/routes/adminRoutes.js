@@ -6,6 +6,7 @@ import {
   deleteUser,
   postTender,
   updateBidStatus,
+  updateTender,
   updateTenderStatus,
   updateUser,
   userList,
@@ -38,6 +39,13 @@ router.patch(
   authenticate,
   authorize("admin"),
   updateTenderStatus
+)
+router.patch(
+  "/updateTender/:id",
+  authenticate,
+  authorize("admin"),
+  upload.single("image"),
+  updateTender
 )
 router.delete("/deleteUser/:id", authenticate, authorize("admin"), deleteUser)
 router.delete(

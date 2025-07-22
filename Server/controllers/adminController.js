@@ -118,3 +118,31 @@ export const updateTenderStatus = async (req, res) => {
     res.status(400).json(error)
   }
 }
+
+export const updateTender = async (req, res) => {
+  const { id } = req.params
+  const { title, baseAmount, description, status, deadline } = req.body
+
+  const imagePath = req.file ? `/uploads/${req.file.filename}` : undefined
+
+  const updateFields = {
+    title,
+    baseAmount,
+    description,
+    status,
+    deadline,
+  }
+
+  if (imagePath) {
+    updateFields.image = imagePath
+  }
+
+  try {
+    const updatedTender = await Tender.findByIdAndUpdate(id, req.body, {
+      new: true,
+    })
+    res.status(200).json(updatedTender)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+}
