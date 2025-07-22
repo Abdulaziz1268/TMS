@@ -55,7 +55,7 @@ function TenderList({ tender }) {
           <button
             className="btn"
             onClick={() => {
-              navigate("/EditTender", { state: { tender } })
+              navigate("/EditTender", { state: { tenderId: tender._id } })
             }}
           >
             Edit

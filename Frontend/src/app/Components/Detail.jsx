@@ -74,11 +74,15 @@ const Detail = () => {
     <div className="tenderDetailContainer">
       <div className="innerTenderDetailContainer">
         <div className="topContainer">
-          <img
-            src={tender.image ? `http://localhost:2005${tender.image}` : photo}
-            className="detailImage"
-            alt="Tender"
-          />
+          <div className="detailImageContainer">
+            <img
+              src={
+                tender.image ? `http://localhost:2005${tender.image}` : photo
+              }
+              className="detailImage"
+              alt="Tender"
+            />
+          </div>
           <div className="topRight">
             <div className="topBid tag">
               <h1>

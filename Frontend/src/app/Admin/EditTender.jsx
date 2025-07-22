@@ -1,17 +1,45 @@
-import { ErrorMessage, Field, Form, Formik } from "formik"
-import { useLocation } from "react-router-dom"
-import { adminApi } from "../Config/Api"
+import { Formik } from "formik"
+import { useLocation, useNavigate } from "react-router-dom"
+import { adminApi, vendorApi } from "../Config/Api"
 import { toast } from "sonner"
+import { useEffect, useState } from "react"
 
 const EditTender = () => {
+  const [tender, setTender] = useState({})
+  const [refresher, setRefresher] = useState(false)
   const location = useLocation()
-  const { tender } = location.state || {}
-  // console.log(tender)
+  const { tenderId } = location.state || {}
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!tenderId) return
+
+    const fetchTender = async () => {
+      try {
+        const response = await vendorApi.get(`/tender/${tenderId}`)
+        setTender(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchTender()
+  }, [tenderId, refresher])
+
+  if (!tender || !tender._id) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "100px" }}>
+        <p>Loading tender details...</p>
+      </div>
+    )
+  }
+
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <div style={{ margin: "20px 100px", width: "50%" }}>
         <h1 style={{ color: "cornflowerblue" }}>Edit Tender Detail</h1>
         <Formik
+          enableReinitialize
           initialValues={{
             title: tender.title,
             baseAmount: tender.baseAmount,
@@ -37,11 +65,15 @@ const EditTender = () => {
 
             try {
               const result = await adminApi.patch(
-                `/updateTender/${tender._id}`,
+                `/updateTender/${tenderId}`,
                 formData
               )
               console.log(result)
               toast.success("Updated Successfully.")
+              setRefresher((prev) => !prev)
+              setTimeout(() => {
+                navigate("/Detail", { state: { tender: result.data } })
+              }, 1500)
             } catch (error) {
               console.log(error)
               toast.error("Error occured. Please try again!")

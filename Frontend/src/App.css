@@ -2,7 +2,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-.topForm .container {
+.container {
   background-color: white;
   width: 100%;
   height: 100vh;
@@ -426,13 +426,19 @@
 }
 
 .detailImage {
-  width: 100%;
-  min-width: 600px;
-  max-height: 45vh;
-  border-radius: 10px;
-  box-shadow: 0 0 15px 5px lightgray;
-  object-fit: cover;
-  background-color: cornflowerblue;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+}
+.detailImageContainer {
+  width: 600px;
+  height: 45vh;
+  margin-right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .topContainer {
