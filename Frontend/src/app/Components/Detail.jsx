@@ -1,7 +1,7 @@
 import moment from "moment"
 import { toast } from "sonner"
 import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 import AdminBidList from "../Admin/AdminBidList"
 import { adminApi, vendorApi } from "../Config/Api"
@@ -10,9 +10,10 @@ import photo from "../../assets/placeholderimage1.png"
 const Detail = () => {
   const [highestBid, setHighestBid] = useState(null)
   const [timeLeft, setTimeLeft] = useState("")
+  const [selected, setSelected] = useState("close")
   const location = useLocation()
   const { tender } = location.state || {} // Get tender from state
-  const [selected, setSelected] = useState("close")
+  const navigate = useNavigate()
 
   if (!tender) return <p>Loading...</p> // Prevents crashes
 
@@ -63,7 +64,7 @@ const Detail = () => {
         { status: selected }
       )
       console.log(response.data)
-      toast.success("updated succefully")
+      toast.success("updated succefullyy")
     } catch (error) {
       console.error("Error updating status:", error)
       toast.error("error occured please try again")
@@ -94,14 +95,63 @@ const Detail = () => {
             </div>
             <div className="date tag">
               <h2>
-                Due date: <span className="dueDate">{timeLeft}</span>
+                Due date:{" "}
+                <span className="dueDate">
+                  {timeLeft !== "00h 00m 00s" || tender.status === "closed"
+                    ? timeLeft
+                    : new Date(tender.deadline).toDateString()}
+                </span>
               </h2>
             </div>
           </div>
         </div>
         <div className="details">
-          <form onSubmit={handleSubmit} className="updateStatus">
-            <select
+          <form
+            onSubmit={handleSubmit}
+            className="updateStatus"
+            style={{ display: "flex" }}
+          >
+            <button
+              type="button" //prevents from submitting the form
+              className="statusBtn"
+              style={{ marginRight: "15px", fontWeight: "bold" }}
+              onClick={() =>
+                navigate("/EditTender", { state: { tenderId: tender._id } })
+              }
+            >
+              Edit Tender
+            </button>
+
+            <p
+              style={{
+                background:
+                  tender.status === "open"
+                    ? "#84eab3"
+                    : tender.status === "close"
+                    ? "#FFCCCB"
+                    : "#DDD5F3",
+                color:
+                  tender.status === "open"
+                    ? "green"
+                    : tender.status === "close"
+                    ? "red"
+                    : "purple",
+                padding: 10,
+                borderRadius: "10px",
+                width: "80px",
+                display: "flex",
+                justifyContent: "center",
+                fontWeight: "bold",
+              }}
+            >
+              {tender.status === "open"
+                ? "Open"
+                : tender.status === "close"
+                ? "Closed"
+                : "Awarded"}
+            </p>
+
+            {/* <select
               name="Selected"
               value={selected}
               onChange={handleChange}
@@ -113,9 +163,18 @@ const Detail = () => {
             </select>
             <button type="submit" className="statusBtn">
               Update
-            </button>
+            </button> */}
           </form>
-          <h2 className="title">{tender.title}</h2>
+          <h1
+            className="title"
+            style={{
+              color: "cornflowerblue",
+              alignSelf: "start",
+              display: "flex",
+            }}
+          >
+            {tender.title}
+          </h1>
           <p className="description">{tender.description}</p>
         </div>
       </div>

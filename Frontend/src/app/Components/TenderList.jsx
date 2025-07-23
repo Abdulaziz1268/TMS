@@ -18,10 +18,6 @@ function TenderList({ tender }) {
     }
   }
 
-  // useEffect(() => {
-  //   console.log(tender)
-  // }, [refresher])
-
   return (
     <div className="tenderListContainer">
       <div className="tenderImageContainer">
@@ -42,7 +38,6 @@ function TenderList({ tender }) {
           >
             view Details
           </button>
-          {/* <button className="btn">Edit</button> */}
           <button
             className="btn"
             onClick={() => {
@@ -51,14 +46,6 @@ function TenderList({ tender }) {
             }}
           >
             Delete
-          </button>
-          <button
-            className="btn"
-            onClick={() => {
-              navigate("/EditTender", { state: { tenderId: tender._id } })
-            }}
-          >
-            Edit
           </button>
         </div>
       </div>

@@ -6,7 +6,7 @@ const tenderSchema = new Schema(
     description: { type: String, required: true },
     baseAmount: { type: Number, default: 0 },
     deadline: { type: Date, default: Date.now },
-    status: { type: String, default: "open" },
+    status: { type: String, default: "close" },
     createdAt: { type: Date, default: Date.now },
     image: { type: String, default: null },
     bids: [{ type: Schema.Types.ObjectId, ref: "Bid" }],

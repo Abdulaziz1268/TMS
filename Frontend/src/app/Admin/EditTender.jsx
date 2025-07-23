@@ -63,6 +63,8 @@ const EditTender = () => {
               formData.append("image", values.image)
             }
 
+            // console.log(values)
+
             try {
               const result = await adminApi.patch(
                 `/updateTender/${tenderId}`,
@@ -188,9 +190,9 @@ const EditTender = () => {
                     value={values.status}
                     onChange={handleChange}
                   >
-                    <option value="Open">Open</option>
-                    <option value="Close">Close</option>
-                    <option value="Awarded">Awarded</option>
+                    <option value="open">Open</option>
+                    <option value="close">Close</option>
+                    <option value="awarded">Awarded</option>
                   </select>
                 </div>
               </div>
