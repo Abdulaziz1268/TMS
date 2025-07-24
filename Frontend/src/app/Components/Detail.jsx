@@ -87,21 +87,21 @@ const Detail = () => {
           <div className="topRight">
             <div className="topBid tag">
               <h1>
-                Top Bid:{" "}
+                Top Bid <br />
                 <span className="topBidAmount">
-                  ${highestBid ? highestBid.bidAmount : "No bids yet"}
+                  $ {highestBid ? highestBid.bidAmount : "No bids yet"}
                 </span>
               </h1>
             </div>
             <div className="date tag">
-              <h2>
-                Due date:{" "}
+              <h1>
+                Due date <br />
                 <span className="dueDate">
                   {timeLeft !== "00h 00m 00s" || tender.status === "closed"
                     ? timeLeft
                     : new Date(tender.deadline).toDateString()}
                 </span>
-              </h2>
+              </h1>
             </div>
           </div>
         </div>
@@ -178,16 +178,42 @@ const Detail = () => {
           <p className="description">{tender.description}</p>
         </div>
       </div>
-      <div className="outerBidListContainer">
+      <div
+        className="outerBidListContainer"
+        style={{
+          // background: "red",
+          height: "90vh",
+          // border: "2px solid",
+          // borderColor: "cornflowerblue",
+          boxShadow: "0 2px 12px 5px rgba(100, 149, 237, 0.4)",
+          borderRadius: "20px",
+          overflow: "hidden",
+        }}
+      >
         <div className="bidListContainer bidHeader">
           <p className="vendorId">Vendor Id</p>
           <p className="bidAmount">Bid Amount</p>
           <p className="viewDoc">Document</p>
           <p className="statusForm">Status</p>
         </div>
-        {tender.bids.map((item) => (
-          <AdminBidList key={item._id} item={item} />
-        ))}
+        <div
+          style={{
+            height: "100%",
+            margin: "20px",
+            display: "flex",
+            flexDirection: "column",
+            // justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {Array.isArray(tender.bids) && tender.bids.length > 0 ? (
+            tender.bids.map((item) => (
+              <AdminBidList key={item._id} item={item} />
+            ))
+          ) : (
+            <p style={{ marginTop: "30vh" }}>No bids Yet.</p>
+          )}
+        </div>
       </div>
     </div>
   )
