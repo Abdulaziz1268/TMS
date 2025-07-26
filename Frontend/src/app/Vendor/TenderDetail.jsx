@@ -51,47 +51,58 @@ const TenderDetail = () => {
   }, [tender])
 
   return (
-    <div className="tenderDetailContainer">
-      <div className="inTenderDetailContainer">
+    <div className="tenderDetailContainer" style={{ height: "auto" }}>
+      <div
+        className="inTenderDetailContainer"
+        style={{
+          width: "50%",
+          padding: "0 20px 20px 20px",
+          boxShadow: "0px 0px 10px 0px cornflowerblue",
+          borderRadius: "20px",
+        }}
+      >
         <div className="topContainer">
-          <img
-            src={tender.image ? `http://localhost:2005${tender.image}` : photo}
-            className="detailImage"
-          />
+          <div className="detailImageContainer" style={{ margin: "20px" }}>
+            <img
+              src={
+                tender.image ? `http://localhost:2005${tender.image}` : photo
+              }
+              className="detailImage"
+            />
+          </div>
           <div className="topRight">
             <div className="topBid tag">
               <h1>
-                Top Bid:{" "}
+                Top Bid <br />
                 <span className="topBidAmount">
-                  ${highestBid ? highestBid.bidAmount : "No bids yet"}
+                  $ {highestBid ? highestBid.bidAmount : "No bids yet"}
                 </span>
               </h1>
-              {/* {highestBid && (
-              <>
-                <p>Vendor ID: {highestBid.vendorId}</p>
-                <p>
-                  Document:{" "}
-                  <a
-                    href={highestBid.documentUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Document
-                  </a>
-                </p>
-              </>
-            )} */}
             </div>
-            <div className="date tag dateContainer">
-              <h2>
-                Due date: <span className="dueDate">{timeLeft}</span>
-              </h2>
+            <div className="date tag">
+              <h1>
+                Due date <br />
+                <span className="dueDate">
+                  {timeLeft !== "00h 00m 00s" || tender.status === "closed"
+                    ? timeLeft
+                    : new Date(tender.deadline).toDateString()}
+                </span>
+              </h1>
             </div>
           </div>
         </div>
         <div className="details">
           <p className="basePrice">{`Base Price: ${tender.baseAmount}`}</p>
-          <h2 className="title">{tender.title}</h2>
+          <h1
+            className="title"
+            style={{
+              color: "cornflowerblue",
+              display: "flex",
+              alignSelf: "start",
+            }}
+          >
+            {tender.title}
+          </h1>
           <p className="description">{tender.description}</p>
         </div>
         {localStorage.getItem("role") !== "admin" && (

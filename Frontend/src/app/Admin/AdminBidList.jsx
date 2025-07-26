@@ -36,7 +36,16 @@ function Bids({ item }) {
 
   return (
     <div className="bidListContainer">
-      <p className="vendorId">{bid.vendorId}</p>
+      <div
+        style={{
+          width: "25%",
+          overflow: "hidden",
+        }}
+      >
+        <p title={bid.vendorId} className="vendorId">
+          {bid.vendorId}
+        </p>
+      </div>
       <p className="bidAmount">{bid.bidAmount}</p>
       <p className="viewDoc">
         <a

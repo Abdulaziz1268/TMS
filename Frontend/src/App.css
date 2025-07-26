@@ -2,7 +2,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-tag .container {
+.detailImage .container {
   background-color: white;
   width: 100%;
   height: 100vh;
@@ -409,6 +409,7 @@ tag .container {
 }
 
 .innerTenderDetailContainer {
+  border: 3px solid red;
   width: 47%;
 }
 
@@ -434,6 +435,7 @@ tag .container {
   height: auto;
   display: block;
   border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px gray;
 }
 .detailImageContainer {
   width: 100%;
@@ -801,10 +803,14 @@ input::-webkit-inner-spin-button {
 .bidHeader {
   background-color: cornflowerblue;
   color: aliceblue;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .statusForm {
   display: flex;
+  display: flex;
+  align-self: center;
 }
 
 .vendorId,

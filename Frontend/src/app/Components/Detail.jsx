@@ -193,7 +193,6 @@ const Detail = () => {
         <div className="bidListContainer bidHeader">
           <p className="vendorId">Vendor Id</p>
           <p className="bidAmount">Bid Amount</p>
-          <p className="viewDoc">Document</p>
           <p className="statusForm">Status</p>
         </div>
         <div
