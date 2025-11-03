@@ -1,14 +1,25 @@
+import fs from "fs/promises"
+
+import cloudinary from "../config/cloudinary.js"
 import Bid from "../models/bidModel.js"
 import Tender from "../models/tenderModel.js"
 
 export const submitBid = async (req, res) => {
   try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "bid_documents",
+      resource_type: "auto",
+    })
+
+    fs.unlink(req.file.path)
+
     // Create a new bid with the uploaded file information
     const newBid = new Bid({
       tenderId: req.body.tenderId,
       vendorId: req.body.vendorId,
       bidAmount: req.body.bidAmount,
-      documentUrl: `/uploads/${req.file.filename}`, // Save relative the file path
+      // documentUrl: `/uploads/${req.file.filename}`, // Save relative the file path
+      documentUrl: result.secure_url,
       status: req.body.status || "pending",
       createdAt: Date.now(), // Set timestamp for bid submission
     })

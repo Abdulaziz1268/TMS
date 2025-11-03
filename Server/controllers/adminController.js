@@ -1,3 +1,6 @@
+import fs from "fs/promises"
+
+import cloudinary from "../config/cloudinary.js"
 import Bid from "../models/bidModel.js"
 import Tender from "../models/tenderModel.js"
 import User from "../models/userModel.js"
@@ -8,12 +11,20 @@ export const postTender = async (req, res) => {
     : undefined
 
   try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "tender_images",
+      resource_type: "auto",
+    })
+
+    fs.unlink(req.file.path) // remove file from local storage
+
     const newTender = new Tender({
       title: req.body.title,
       description: req.body.description,
       deadline: updatedDate,
       baseAmount: req.body.baseAmount,
-      image: `/uploads/${req.file.filename}`,
+      // image: `/uploads/${req.file.filename}`,
+      image: result.secure_url,
     })
     console.log("woooo" + req.body.deadline)
 
@@ -123,7 +134,7 @@ export const updateTender = async (req, res) => {
   const { id } = req.params
   const { title, baseAmount, description, status, deadline } = req.body
 
-  const imagePath = req.file ? `/uploads/${req.file.filename}` : undefined
+  // const imagePath = req.file ? `/uploads/${req.file.filename}` : undefined
 
   const updateFields = {
     title,
@@ -133,12 +144,20 @@ export const updateTender = async (req, res) => {
     deadline,
   }
 
-  if (imagePath) {
-    updateFields.image = imagePath
-  }
-
   try {
-    const updatedTender = await Tender.findByIdAndUpdate(id, req.body, {
+    if (req.file) {
+      // updateFields.image = imagePath
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        folder: "tender_images",
+        resource_type: "auto",
+      })
+
+      fs.unlink(req.file.path)
+
+      updateFields.image = result.secure_url
+    }
+
+    const updatedTender = await Tender.findByIdAndUpdate(id, updateFields, {
       new: true,
     })
     res.status(200).json(updatedTender)
