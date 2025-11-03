@@ -7,15 +7,18 @@ import { vendorApi } from "../Config/Api"
 
 function Tender() {
   const [tenders, setTenders] = useState([])
+  const [loading, setLoading] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
+    setLoading(true)
     vendorApi
       .get("/tenderList")
       .then((result) => {
         setTenders(result.data)
       })
       .catch((error) => console.log(error.message))
+      .finally(() => setLoading(false))
   }, [])
 
   const filteredTenders = searchQuery
@@ -42,19 +45,27 @@ function Tender() {
         </div>
       </div>
 
-      {filteredTenders.length > 0 ? (
-        filteredTenders.map((tender) => (
-          <Card
-            key={tender._id}
-            src={tender.image ? `http://localhost:2005${tender.image}` : photo}
-            title={tender.title}
-            subTitle={tender.description}
-            tender={tender}
-            badge={tender.status}
-          />
-        ))
+      {!loading ? (
+        filteredTenders.length > 0 ? (
+          filteredTenders.map((tender) => (
+            <Card
+              key={tender._id}
+              src={
+                tender.image ? `http://localhost:2005${tender.image}` : photo
+              }
+              title={tender.title}
+              subTitle={tender.description}
+              tender={tender}
+              badge={tender.status}
+            />
+          ))
+        ) : (
+          <p>No tenders found.</p>
+        )
       ) : (
-        <p>No tenders found.</p>
+        <div className="w-full h-full flex justify-center pt-25">
+          <p className="text-2xl">Loading...</p>
+        </div>
       )}
     </div>
   )

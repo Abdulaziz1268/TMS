@@ -9,6 +9,7 @@ import { adminApi } from "../Config/Api"
 
 const Users = () => {
   const [data, setData] = useState([])
+  const [loading, setLoading] = useState(false)
   const [editUserId, setEditUserId] = useState(null)
   const [editFormData, setEditFormData] = useState({
     fname: "",
@@ -18,12 +19,14 @@ const Users = () => {
   })
 
   useEffect(() => {
+    setLoading(true)
     adminApi
       .get("/userList")
       .then((result) => {
         setData(result.data)
       })
       .catch((err) => console.log(err.message))
+      .finally(() => setLoading(false))
   }, [editUserId])
 
   const handleFormChange = (e) => {
@@ -66,6 +69,13 @@ const Users = () => {
       toast.error("There was an error, please try again")
     }
   }
+
+  if (loading)
+    return (
+      <div className="w-full h-full flex justify-center items-center">
+        <p className="text-2xl">Loading...</p>
+      </div>
+    )
 
   return (
     <div className="users-container">
