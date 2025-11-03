@@ -15,6 +15,7 @@ export const postTender = async (req, res) => {
       folder: "tender_images",
       resource_type: "auto",
     })
+    console.log(result.secure_url)
 
     fs.unlink(req.file.path) // remove file from local storage
 
@@ -38,6 +39,7 @@ export const postTender = async (req, res) => {
       message: "An error occurred while creating the tender",
       error: error.message,
     })
+    console.log(error.message)
   }
 }
 
