@@ -16,7 +16,7 @@ function AdminNav({ selectedComponent, src = photo }) {
   return (
     <div className="navContainer">
       <h2 className="navHeader">{selectedComponent.toUpperCase()}</h2>
-      <div className="navProfile">
+      <div className="flex flex-row">
         <img
           src={homePhoto}
           alt="home image"

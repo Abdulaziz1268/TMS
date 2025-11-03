@@ -11,17 +11,27 @@ import TenderList from "../Components/TenderList"
 
 function Tenders() {
   const [list, setList] = useState([])
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
+    setLoading(true)
     adminApi
       .get("/tenderList")
       .then((result) => {
         setList(result.data)
-        console.log(result.data) // Logs updated data
+        console.log(result.data)
       })
       .catch((error) => console.log(error.message))
-  }, []) // No dependency needed
+      .finally(() => setLoading(false))
+  }, [])
+
+  if (loading)
+    return (
+      <div className="w-full h-full flex justify-center items-center">
+        <p className="text-2xl">Loading...</p>
+      </div>
+    )
 
   return (
     <div className="outerContainer">
