@@ -21,7 +21,7 @@ function TenderList({ tender }) {
   return (
     <div className="tenderListContainer">
       <div className="tenderImageContainer">
-        <img src={`${BASE_URL}${tender.image}`} className="tenderPic" />
+        <img src={tender.image} className="tenderPic" />
       </div>
       <div className="tenderDetailsContainer">
         <div className="leftContainer">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
-import { adminApi, BASE_URL } from "../Config/Api"
+import { adminApi } from "../Config/Api"
 
 function Bids({ item }) {
   const [selectValue, setSelectValue] = useState("")
@@ -48,11 +48,7 @@ function Bids({ item }) {
       </div>
       <p className="bidAmount">{bid.bidAmount}</p>
       <p className="viewDoc">
-        <a
-          href={`${BASE_URL}${bid.documentUrl}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={bid.documentUrl} target="_blank" rel="noopener noreferrer">
           View Document
         </a>
       </p>
