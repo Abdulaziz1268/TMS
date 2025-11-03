@@ -1,23 +1,27 @@
 import axios from "axios"
 import { toast } from "sonner"
 
+const REMOTE_URL = import.meta.env.VITE_REMOTE_URL
+const LOCAL_URL = import.meta.env.VITE_LOCAL_URL
+
+const cloude = true
+export const BASE_URL = cloude ? REMOTE_URL : LOCAL_URL
+
 export const adminApi = axios.create({
-  baseURL: "http://localhost:2005/api/admin",
+  baseURL: `${BASE_URL}/api/admin`,
 })
 
 export const authApi = axios.create({
-  baseURL: "http://localhost:2005/api/auth",
+  baseURL: `${BASE_URL}/api/auth`,
 })
 
 export const vendorApi = axios.create({
-  baseURL: "http://localhost:2005/api/vendor",
+  baseURL: `${BASE_URL}/api/vendor`,
 })
 
 export const paymentApi = axios.create({
-  baseURL: "http://localhost:2005/api/payment",
+  baseURL: `${BASE_URL}/api/payment`,
 })
-
-export const BASE_URL = "http://localhost:2005" // for serving files and images
 
 const authReqInterceptor = (req) => {
   const token = localStorage.getItem("token")
