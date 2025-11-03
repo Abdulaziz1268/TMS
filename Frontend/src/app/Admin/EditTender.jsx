@@ -155,13 +155,15 @@ const EditTender = () => {
                     value={values.baseAmount}
                   />
                   <h3 style={{ marginTop: "10px" }}>Description</h3>
-                  <input
+                  <textarea
+                    rows={15}
                     type="text"
                     placeholder="Enter description"
                     name="description"
                     className="inputForm"
                     onChange={handleChange}
                     value={values.description}
+                    wrap="soft"
                   />
                   <h3 style={{ marginTop: "10px" }}>Deadline</h3>
                   <input

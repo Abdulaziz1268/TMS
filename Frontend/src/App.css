@@ -2,7 +2,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-.detailImage .container {
+.container {
   background-color: white;
   width: 100%;
   height: 100vh;
@@ -409,8 +409,8 @@
 }
 
 .innerTenderDetailContainer {
-  border: 3px solid red;
   width: 47%;
+  padding-bottom: 20px;
 }
 
 .dateContainer {
