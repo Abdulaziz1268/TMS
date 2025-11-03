@@ -77,9 +77,7 @@ const Detail = () => {
         <div className="topContainer">
           <div className="detailImageContainer">
             <img
-              src={
-                tender.image ? `http://localhost:2005${tender.image}` : photo
-              }
+              src={tender.image ? tender.image : photo}
               className="detailImage"
               alt="Tender"
             />

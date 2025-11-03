@@ -2,7 +2,7 @@ import { toast } from "sonner"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-import { adminApi, BASE_URL } from "../Config/Api"
+import { adminApi } from "../Config/Api"
 
 function TenderList({ tender }) {
   const navigate = useNavigate()

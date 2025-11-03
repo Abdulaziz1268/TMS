@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Card from "../Components/Card"
 import photo from "../../assets/placeholderimage1.png"
 import searchPhoto from "../../assets/search.svg"
-import { BASE_URL, vendorApi } from "../Config/Api"
+import { vendorApi } from "../Config/Api"
 
 function Tender() {
   const [tenders, setTenders] = useState([])
@@ -50,7 +50,7 @@ function Tender() {
           filteredTenders.map((tender) => (
             <Card
               key={tender._id}
-              src={tender.image ? `${BASE_URL}${tender.image}` : photo}
+              src={tender.image ? tender.image : photo}
               title={tender.title}
               subTitle={tender.description}
               tender={tender}

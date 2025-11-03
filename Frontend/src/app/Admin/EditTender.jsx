@@ -116,7 +116,7 @@ const EditTender = () => {
                     </>
                   ) : (
                     <img
-                      src={`http://localhost:2005${values.image}`}
+                      src={values.image}
                       alt="Existing"
                       style={{ height: "40vh", borderRadius: "20px" }}
                     />
