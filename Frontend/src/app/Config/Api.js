@@ -4,8 +4,8 @@ import { toast } from "sonner"
 const REMOTE_URL = import.meta.env.VITE_REMOTE_URL
 const LOCAL_URL = import.meta.env.VITE_LOCAL_URL
 
-const cloude = true
-export const BASE_URL = cloude ? REMOTE_URL : LOCAL_URL
+const cloud = true
+export const BASE_URL = cloud ? REMOTE_URL : LOCAL_URL
 
 export const adminApi = axios.create({
   baseURL: `${BASE_URL}/api/admin`,

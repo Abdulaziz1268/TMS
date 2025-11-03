@@ -3,7 +3,7 @@ import { toast } from "sonner"
 import { useCallback, useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
-import { paymentApi, vendorApi } from "../Config/Api"
+import { BASE_URL, paymentApi, vendorApi } from "../Config/Api"
 
 function Bid() {
   const [bAmount, setBAmount] = useState(0)
@@ -46,8 +46,8 @@ function Bid() {
               email: "abdumh2018@gmail.com",
               phone: "0929247282",
               tx_ref: `TX-${Date.now()}`,
-              callback_url: "http://localhost:2005/api/payment/paymentCheck",
-              return_url: "http://localhost:5173/vendor?payment=success",
+              callback_url: `${BASE_URL}/api/payment/paymentCheck`,
+              return_url: `${BASE_URL}/vendor?payment=success`,
             }
             try {
               const response = await paymentApi.post("/initiatePayment", data)

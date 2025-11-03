@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 
 import photo from "../../assets/placeholderimage1.png"
-import { vendorApi } from "../Config/Api"
+import { BASE_URL, vendorApi } from "../Config/Api"
 
 const TenderDetail = () => {
   const [highestBid, setHighestBid] = useState(null)
@@ -64,9 +64,7 @@ const TenderDetail = () => {
         <div className="topContainer">
           <div className="detailImageContainer" style={{ margin: "20px" }}>
             <img
-              src={
-                tender.image ? `http://localhost:2005${tender.image}` : photo
-              }
+              src={tender.image ? `${BASE_URL}${tender.image}` : photo}
               className="detailImage"
             />
           </div>

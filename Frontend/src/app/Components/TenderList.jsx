@@ -2,7 +2,7 @@ import { toast } from "sonner"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-import { adminApi } from "../Config/Api"
+import { adminApi, BASE_URL } from "../Config/Api"
 
 function TenderList({ tender }) {
   const navigate = useNavigate()
@@ -21,10 +21,7 @@ function TenderList({ tender }) {
   return (
     <div className="tenderListContainer">
       <div className="tenderImageContainer">
-        <img
-          src={`http://localhost:2005${tender.image}`}
-          className="tenderPic"
-        />
+        <img src={`${BASE_URL}${tender.image}`} className="tenderPic" />
       </div>
       <div className="tenderDetailsContainer">
         <div className="leftContainer">
