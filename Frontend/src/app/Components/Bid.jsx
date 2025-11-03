@@ -47,7 +47,7 @@ function Bid() {
               phone: "0929247282",
               tx_ref: `TX-${Date.now()}`,
               callback_url: `${BASE_URL}/api/payment/paymentCheck`,
-              return_url: `https://tenmansys.netlify.app/vendor?payment=success`,
+              return_url: `https://tenmansys.netlify.app/?payment=success`,
             }
             try {
               const response = await paymentApi.post("/initiatePayment", data)
