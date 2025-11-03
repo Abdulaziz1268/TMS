@@ -24,7 +24,7 @@ function TenderList({ tender }) {
         <img src={tender.image} className="tenderPic" />
       </div>
       <div className="tenderDetailsContainer">
-        <div className="leftContainer">
+        <div className="leftContainer overflow-y-hidden">
           <h2 className="tenderTitle">{tender.title}</h2>
           <h3 className="tenderDisc">{tender.description}</h3>
         </div>

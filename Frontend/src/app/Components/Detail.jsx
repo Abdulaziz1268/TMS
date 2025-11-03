@@ -2,6 +2,7 @@ import moment from "moment"
 import { toast } from "sonner"
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import { FaArrowLeft } from "react-icons/fa"
 
 import AdminBidList from "../Admin/AdminBidList"
 import { adminApi, vendorApi } from "../Config/Api"
@@ -73,7 +74,12 @@ const Detail = () => {
 
   return (
     <div className="tenderDetailContainer">
-      <div className="innerTenderDetailContainer">
+      <div className="innerTenderDetailContainer relative">
+        <FaArrowLeft
+          size={25}
+          className="text-blue-500 absolute top-0 -left-3 hover:scale-105 hover:cursor-pointer"
+          onClick={() => navigate("/admin")}
+        />
         <div className="topContainer">
           <div className="detailImageContainer">
             <img
