@@ -119,7 +119,7 @@ function Home() {
           </div>
           <div className="w-full flex justify-center">
             <button
-              className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-12 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-12 rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:cursor-pointer"
               onClick={() => navigate("/vendor")}
             >
               <h2 className="text-lg">Explore Tenders →</h2>
