@@ -5,7 +5,7 @@ function Card({ badge, src, subTitle, title, tender }) {
   const navigate = useNavigate()
   return (
     <div
-      className="cardContainer"
+      className="cardContainer hover:scale-105 duration-300 ease-in-out hover:cursor-pointer"
       onClick={() => {
         tender.status == "close"
           ? toast.error("the tender is closed")
